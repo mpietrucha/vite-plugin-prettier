@@ -1,0 +1,14 @@
+{
+    "name": "vite-plugin-prettier",
+    "version": "0.0.1",
+    "license": "MIT",
+    "author": {
+        "name": "Michał Pietrucha",
+        "email": "michal.pietrucha@off-site.pl"
+    },
+    "type": "module",
+    "prettier": "@mpietrucha/prettier",
+    "dependencies": {
+        "@mpietrucha/prettier": "^0.0.2"
+    }
+}
