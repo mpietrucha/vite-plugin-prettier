@@ -1,25 +1,45 @@
 import Writer from '@mpietrucha/prettier/writer'
 
-const writer = new Writer()
+class Builder {
+    build(watcher, cache) {
+        const ignore = watcher.options.ignored
+
+        const writer = new Writer({
+            cache,
+            ignore,
+        })
+
+        ignore.push(...writer.ignored(ignore))
+
+        this.writer = writer
+    }
+
+    get() {
+        if (this.writer) {
+            return this.writer
+        }
+
+        throw new Error('Cannot access Writer instance before initialization.')
+    }
+}
+
+const builder = new Builder()
 
 export default (options = {}) => {
+    const { cache, ...config } = options
+
     const name = 'vite-plugin-prettier'
 
-    const buildStart = () => writer.all(options)
+    const buildStart = () => builder.get().all(config)
 
-    const watchChange = file => writer.write(file, options)
+    const watchChange = file => builder.get().write(file, config)
 
-    const configResolved = ({ root }) => writer.using({ root })
-
-    const configureServer = ({ watcher }) => {
-        writer.using({ ignore: watcher.options.ignored })
-    }
+    const configureServer = ({ watcher }) => builder.build(watcher, cache)
 
     return {
         name,
         buildStart,
         watchChange,
-        configResolved,
         configureServer,
     }
 }
