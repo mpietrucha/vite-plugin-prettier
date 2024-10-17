@@ -1,6 +1,6 @@
 {
     "name": "@mpietrucha/vite-plugin-prettier",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "license": "MIT",
     "author": {
         "name": "Michał Pietrucha",
@@ -9,6 +9,6 @@
     "type": "module",
     "prettier": "@mpietrucha/prettier",
     "dependencies": {
-        "@mpietrucha/prettier": "^0.0.3"
+        "@mpietrucha/prettier": "^0.0.4"
     }
 }
