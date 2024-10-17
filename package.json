@@ -9,6 +9,6 @@
     "type": "module",
     "prettier": "@mpietrucha/prettier",
     "dependencies": {
-        "@mpietrucha/prettier": "^0.0.4"
+        "@mpietrucha/prettier": "^0.0.5"
     }
 }
